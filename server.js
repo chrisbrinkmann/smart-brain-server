@@ -1,5 +1,4 @@
 const express = require('express')
-const port = 3000
 const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt')
 const saltRounds = 10; // for password hashing
@@ -47,6 +46,6 @@ app.put('/entry', (req, res) => {entry.handleEntry(req, res, db)})
 app.post('/entryurl', (req, res) => {entry.handleApiCall(req, res)})
 
 // start the server listening for requests on the port
-app.listen(port, () => {
-	console.log(`server is listening to port ${port}`)
+app.listen(process.env.PORT || 3000, () => {
+	console.log(`server is listening to port ${process.env.PORT}`)
 })
