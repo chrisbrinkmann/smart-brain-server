@@ -24,13 +24,8 @@ const db = knex({
 app.use(bodyParser.json()) // extracts body portion of incoming req steams to req.body
 app.use(cors()) // cross origin resource sharing
 
-// returns array of user objects
-app.get('/', (req, res) => {
-	db.select('*').from('users')
-	.then(data => {
-		res.json(data)
-	})
-})
+// test
+app.get('/', (req, res) => { res.send('its working')})
 
 // checks req credentials; if valid return user object
 app.post('/signin', (req, res) => {signin.handleSignin(req, res, db, bcrypt)})
