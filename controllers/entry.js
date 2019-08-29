@@ -2,7 +2,7 @@ const Clarifai = require('clarifai')
 
 // object for calling face detection API
 const app = new Clarifai.App({
-	apiKey: process.env.C_API_KEY
+	apiKey: process.env.C_API_KEY // insert your Clarifai API key here in place of process.env.C_API_KEY
 })
 
 // send req to clarafai face detect api
@@ -11,7 +11,7 @@ const handleApiCall = (req, res) => {
 	.then(data => {
 		res.json(data)
 	})
-	.catch(err => false)
+	.catch(err => false) // how to return false + addt'l data?
 }
 
 // increment the user's entries prop, returns user's entry count

@@ -11,6 +11,7 @@ const signin = require('./controllers/signin')
 const profile = require('./controllers/profile')
 const entry = require('./controllers/entry')
 
+// specify your own db client, connection here
 const db = knex({
 	client: 'pg',
 	connection: {
