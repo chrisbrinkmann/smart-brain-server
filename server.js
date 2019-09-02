@@ -9,7 +9,7 @@ const app = express()
 const register = require('./controllers/register')
 const signin = require('./controllers/signin')
 const profile = require('./controllers/profile')
-const entry = require('./controllers/entry')
+const entry = require('./controllers/submit')
 
 // specify your own db client, connection here
 const db = knex({
@@ -35,9 +35,11 @@ app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcryp
 // returns the user object for an id sent as a request param
 app.get('/profile/:id', (req,res) => {profile.handleProfileGet(req, res, db)})
 
-// increment the user's entries prop, returns user's entry count
-app.put('/entry', (req, res) => {entry.handleEntry(req, res, db)})
-app.post('/entryurl', (req, res) => {entry.handleApiCall(req, res)})
+// submit user imageurl to API
+app.post('/imgsubmit', (req, res) => {entry.handleApiCall(req, res)})
+
+// increment user's entries if API resp
+app.put('/entryinc', (req, res) => {entry.handleEntry(req, res, db)})
 
 // start the server listening for requests on the port
 app.listen(process.env.PORT || 3000, () => {
